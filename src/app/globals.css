@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/*
+ * Tokens. Base values from docs/style-reference.md.
+ * The accent is a single pair of tokens: change --accent and --accent-link to re-theme every CTA and link
+ * (for dark crimson try --accent: #9b1c31; --accent-link: #ff4d6d).
+ */
+:root {
+  --obsidian: #000000;
+  --graphite: #0e0e0e;
+  --carbon: #1d1d1f;
+  --steel: #333336;
+  --slate: #6e6e73;
+  --ash: #86868b;
+  --porcelain: #f5f5f7;
+  --white: #ffffff;
+
+  --accent: #0071e3;
+  --accent-link: #2997ff;
+
+  --hairline: rgba(255, 255, 255, 0.1);
+  --radius-card: 28px;
+  --radius-pill: 9999px;
+  --nav-h: 52px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@theme inline {
+  --color-obsidian: var(--obsidian);
+  --color-graphite: var(--graphite);
+  --color-carbon: var(--carbon);
+  --color-steel: var(--steel);
+  --color-slate: var(--slate);
+  --color-ash: var(--ash);
+  --color-porcelain: var(--porcelain);
+  --color-accent: var(--accent);
+  --color-accent-link: var(--accent-link);
+  --color-hairline: var(--hairline);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: var(--radius-card);
+
+  --text-display-xl: 96px;
+  --text-display-xl--line-height: 1.04;
+  --text-display-xl--letter-spacing: -0.015em;
+  --text-display: 80px;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.015em;
+  --text-headline: 56px;
+  --text-headline--line-height: 1.07;
+  --text-headline--letter-spacing: -0.015em;
+  --text-title: 32px;
+  --text-title--line-height: 1.13;
+  --text-title--letter-spacing: -0.004em;
+  --text-eyebrow: 19px;
+  --text-eyebrow--line-height: 1.21;
+  --text-body: 17px;
+  --text-body--line-height: 1.47;
+  --text-body--letter-spacing: -0.022em;
+  --text-small: 14px;
+  --text-small--line-height: 1.43;
+  --text-small--letter-spacing: -0.016em;
+  --text-micro: 12px;
+  --text-micro--line-height: 1.33;
+}
+
+html {
+  background: var(--obsidian);
+  color: var(--porcelain);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: dark;
+  scrollbar-color: var(--steel) var(--obsidian);
+}
+
+body {
+  background: var(--obsidian);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  overflow-x: clip;
+  font-feature-settings: "cv11", "ss01";
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-link);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer base {
+  a {
+    color: inherit;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Fluid display type: 80–96px on desktop, scaling down on phones. */
+.type-display {
+  font-size: clamp(48px, 7.6vw, 96px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.type-headline {
+  font-size: clamp(40px, 5.6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.type-title {
+  font-size: clamp(26px, 2.6vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+/* Hero copy waits for the particle intro; without JS it is simply visible. */
+html.js .hero-reveal {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+}
+
+.scroll-hint-bar {
+  animation: scroll-hint 2.4s var(--ease-inout) infinite;
+}
+@keyframes scroll-hint {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint-bar { animation: none; }
+}
+
+/* SplitText line masks need a little room for descenders. */
+.split-line {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* Custom cursor: only shown when JS enables it on a fine pointer. */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button {
+  cursor: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Project card light sheen, positioned by useTilt. */
+.card-sheen {
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), rgba(255, 255, 255, 0.09), transparent 46%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+.project-card[data-hover] .card-sheen {
+  opacity: 1;
+}
+
+/* Skill grid: the container's spotlight shows through the 1px gaps as glowing cell edges. */
+.skill-grid {
+  background:
+    radial-gradient(360px circle at var(--gx, -999px) var(--gy, -999px), rgba(255, 255, 255, 0.55), transparent 60%),
+    rgba(255, 255, 255, 0.07);
+}
+.skill-cell {
+  color: var(--ash);
+  transition: color 0.6s var(--ease-out), background-color 0.6s var(--ease-out);
+}
+.skill-cell[data-lit] {
+  color: var(--porcelain);
+}
+.skill-grid[data-filter] .skill-cell:not([data-match]) {
+  color: var(--ash);
+  background-color: #000;
+}
+.skill-grid[data-filter] .skill-cell[data-match] {
+  color: var(--white);
+  background-color: #111113;
+}
