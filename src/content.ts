@@ -66,44 +66,44 @@ export const hero = {
 export const featured = {
   label: "Featured project",
   name: "Threat-Pulse",
-  headline: "Every attack on one globe.",
+  headline: "Every attack on one map.",
   steps: [
     {
       title: "A live map of cyberattacks.",
-      body: "A real-time, simulated feed of attacks between countries, drawn as arcs on a 3D globe with a running counter.",
+      body: "A real-time, simulated feed of attacks between countries, drawn as arcs on a world map with a running counter.",
       media: {
         src: "/images/threatpulse-01.jpg",
-        alt: "Threat-Pulse dashboard with the globe, live feed and intelligence panel",
+        alt: "Threat-Pulse dashboard with the world map, live ticker, top attackers and targets, and attack type breakdown",
         width: 1600,
         height: 1000,
       },
     },
     {
       title: "Every event, as it lands.",
-      body: "The live feed logs each attack with its time, type, origin and target, colour-coded by attack type.",
+      body: "The attack log records each attack with its time, severity, type, origin and target, colour-coded by severity.",
       media: {
         src: "/images/threatpulse-04.jpg",
-        alt: "Close-up of the Threat-Pulse live feed listing phishing, malware, brute force and DDoS events",
+        alt: "Close-up of the Threat-Pulse attack log listing DDoS, phishing, malware and brute force events",
         width: 1600,
         height: 1000,
       },
     },
     {
       title: "Read the pattern.",
-      body: "The intelligence panel breaks attacks down by type, with the most targeted countries and the top attacker origins.",
+      body: "The intel panel breaks attacks down by severity and rate, with the most targeted countries and the top attacker origins.",
       media: {
         src: "/images/threatpulse-03.jpg",
-        alt: "Close-up of the Threat-Pulse intelligence panel with the attack type breakdown and top targeted countries",
+        alt: "Close-up of the Threat-Pulse intel panel with the severity breakdown, attack rate and most targeted countries",
         width: 1600,
         height: 1000,
       },
     },
     {
       title: "Built to teach.",
-      body: "Drag to rotate, scroll to zoom, click arcs and countries. Plain HTML and JavaScript, made for threat-intelligence visualization and education.",
+      body: "Drag to pan, scroll to zoom, click a country to open its dossier with real historical incidents. Plain HTML and JavaScript, made for threat-intelligence visualization and education.",
       media: {
         src: "/images/threatpulse-02.jpg",
-        alt: "Threat-Pulse globe zoomed in, with the panels around it",
+        alt: "Threat-Pulse country dossier for Russia, with its exposure score, threat overview and a historical incident",
         width: 1600,
         height: 1000,
       },
@@ -199,7 +199,7 @@ export const about = {
   certificatesLabel: "Certifications",
   certificates: [
     "What Is Generative AI? · LinkedIn Learning",
-    "Introduction to AI · Google on Coursera",
+    "Google AI Essentials · Google on Coursera",
     "Scientific Computing with Python · freeCodeCamp",
     "Mint Ambassadors Project · iCareer",
   ],
